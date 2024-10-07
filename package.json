@@ -2,11 +2,15 @@
   "name": "isolate-business-from-ui-example",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write **/*.{ts,tsx,scss,css,json}",
-    "prepare": "husky"
+    "prepare": "husky",
+    "number-baseball": "pnpm --filter @ibfu/number-baseball",
+    "console-baseball": "pnpm --filter console-baseball",
+    "dom-baseball": "pnpm --filter dom-baseball",
+    "react-baseball": "pnpm --filter react-baseball"
   },
   "keywords": [],
   "author": "",
