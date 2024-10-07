@@ -1,4 +1,4 @@
-import { EvaluatedResult } from '../model/GameEvaluator';
+import { EvaluatedResult } from '../model/EvaluatedResult';
 import OpponentImpl, { Opponent } from '../model/Opponent';
 import { asserts } from '../utils/asserts';
 import { AnswerGenerateService } from './AnswerGenerateService';

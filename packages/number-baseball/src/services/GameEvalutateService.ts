@@ -1,4 +1,4 @@
-import { EvaluatedResult } from '../model/GameEvaluator';
+import { EvaluatedResult } from '../model/EvaluatedResult';
 
 export interface GameEvaluateService {
   evaluate(input: string, answer: string): EvaluatedResult;

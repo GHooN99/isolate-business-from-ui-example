@@ -9,7 +9,7 @@ export interface GameController {
   getResult(input: string): GameResult;
 }
 
-export class GameControllerImpl implements GameController {
+export default class GameControllerImpl implements GameController {
   private isGameStarted: boolean = false;
 
   public constructor(

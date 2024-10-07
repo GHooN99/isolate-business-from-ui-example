@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
-    "test": "vitest run --config ./vitest.config.js",
+    "test": "vitest run --config ./vitest.config.js --reporter verbose",
     "test-watch": "vitest --config ./vitest.config.js --watch",
     "build": "tsup --config tsup.config.mjs",
     "start": "node dist/index.js",

@@ -38,7 +38,7 @@ describe('AnswerGenerateService 테스트', () => {
     expect(mockRandomService.getRandomNumber).toHaveBeenCalledTimes(callCount);
   };
 
-  it('랜덤 함수가 1, 2, 3을 반환하면 generate 메서드는 123을 반환한다', () => {
+  test('랜덤 함수가 1, 2, 3을 반환하면 generate 메서드는 123을 반환한다', () => {
     setupMockRandomSequence([1, 2, 3]);
 
     const result = answerGenerateService.generate();
@@ -49,7 +49,7 @@ describe('AnswerGenerateService 테스트', () => {
     verifyRandomNumberCalls(3);
   });
 
-  it('랜덤 함수가 1, 2, 1, 4를 반환하면 generate 메서드는 124를 반환한다', () => {
+  test('랜덤 함수가 1, 2, 1, 4를 반환하면 generate 메서드는 124를 반환한다', () => {
     setupMockRandomSequence([1, 2, 1, 4]);
 
     const result = answerGenerateService.generate();
@@ -60,7 +60,7 @@ describe('AnswerGenerateService 테스트', () => {
     verifyRandomNumberCalls(4);
   });
 
-  it('랜덤 함수가 1, 9, 1, 9, 5 을 반환하면 generate 메서드는 195을 반환한다', () => {
+  test('랜덤 함수가 1, 9, 1, 9, 5 을 반환하면 generate 메서드는 195을 반환한다', () => {
     setupMockRandomSequence([1, 9, 1, 9, 5]);
 
     const result = answerGenerateService.generate();
