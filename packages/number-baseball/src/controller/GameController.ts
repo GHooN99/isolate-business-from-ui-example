@@ -1,5 +1,7 @@
+import { GameConfiguration } from '../model/GameConfiguration';
 import { GameResult } from '../model/GameResult';
 import { OpponentManageService } from '../services/OpponentManageService';
+import { asserts } from '../utils/asserts';
 
 export interface GameController {
   start(): void;
@@ -8,17 +10,34 @@ export interface GameController {
 }
 
 export class GameControllerImpl implements GameController {
-  constructor(private readonly opponentManageService: OpponentManageService) {}
+  private isGameStarted: boolean = false;
 
-  start(): void {
+  public constructor(
+    private readonly opponentManageService: OpponentManageService,
+    private readonly gameConfiguration: GameConfiguration
+  ) {}
+
+  public start(): void {
+    this.opponentManageService.init();
+    this.isGameStarted = true;
+  }
+
+  public restart(): void {
+    asserts(this.isGameStarted, 'Game is not started');
     this.opponentManageService.init();
   }
 
-  restart(): void {
-    this.opponentManageService.init();
-  }
+  public getResult(input: string): GameResult {
+    asserts(this.isGameStarted, 'Game is not started');
+    asserts(this.gameConfiguration.digitCount === input.length, 'Invalid input length');
 
-  getResult(input: string): GameResult {
-    return this.opponentManageService.evaluate(input);
+    const result = this.opponentManageService.evaluate(input);
+    const { attemptCount } = this.opponentManageService;
+
+    return {
+      result: { ...result },
+      attemptCount,
+      isCorrect: result.strike === this.gameConfiguration.digitCount,
+    };
   }
 }

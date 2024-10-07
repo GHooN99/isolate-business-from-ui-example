@@ -1,29 +1,39 @@
-import { GameResult, makeGameResult } from '../model/GameResult';
+import { EvaluatedResult } from '../model/GameEvaluator';
 import OpponentImpl, { Opponent } from '../model/Opponent';
-import AnswerGenerateService from './AnswerGenerateService';
+import { asserts } from '../utils/asserts';
+import { AnswerGenerateService } from './AnswerGenerateService';
 import { GameEvaluateService } from './GameEvalutateService';
 
 export interface OpponentManageService {
   init(): void;
-  evaluate(input: string): GameResult;
+  evaluate(input: string): EvaluatedResult;
+  get attemptCount(): number;
 }
 
 export default class OpponentManageServiceImpl implements OpponentManageService {
-  private opponents: Opponent[] = [];
+  private opponent: Opponent | null = null;
 
-  constructor(
+  public constructor(
     private readonly answerGenerateService: AnswerGenerateService,
     private readonly gameEvaluateService: GameEvaluateService
   ) {}
 
   public init(): void {
-    this.opponents.push(new OpponentImpl(this.answerGenerateService.generate()));
+    this.opponent = new OpponentImpl(this.answerGenerateService.generate());
   }
 
-  public evaluate(input: string): GameResult {
-    const { answer, attemptCount } = this.opponents[0];
+  public evaluate(input: string): EvaluatedResult {
+    asserts(this.opponent !== null, 'Opponent is not initialized');
+    this.opponent.increaseAttemptCount();
+
+    const { answer } = this.opponent;
     const result = this.gameEvaluateService.evaluate(input, answer);
 
-    return makeGameResult(result, attemptCount);
+    return result;
+  }
+
+  public get attemptCount(): number {
+    asserts(this.opponent !== null, 'Opponent is not initialized');
+    return this.opponent.attemptCount;
   }
 }

@@ -17,6 +17,7 @@ const config = [
       'react/jsx-uses-react': 'off',
       'no-unused-vars': 'warn',
       '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/explicit-member-accessibility': 'error',
       '@typescript-eslint/naming-convention': [
         'error',
         {

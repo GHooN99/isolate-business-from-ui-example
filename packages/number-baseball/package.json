@@ -7,12 +7,15 @@
   "scripts": {
     "test": "vitest run --config ./vitest.config.js",
     "test-watch": "vitest --config ./vitest.config.js --watch",
-    "build": "tsc"
+    "build": "tsup --config tsup.config.mjs",
+    "start": "node dist/index.js",
+    "dev": "tsup --watch --config tsup.config.mjs && node dist/index.js --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "tsup": "^8.3.0",
     "typescript": "^5.6.2",
     "vitest": "^2.1.2"
   }

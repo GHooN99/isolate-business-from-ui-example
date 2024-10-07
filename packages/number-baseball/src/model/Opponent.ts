@@ -1,11 +1,12 @@
 export interface Opponent {
   get answer(): string;
   get attemptCount(): number;
+  increaseAttemptCount(): void;
 }
 
 export default class OpponentImpl implements Opponent {
   #attemptCount: number = 0;
-  constructor(private readonly _answer: string) {
+  public constructor(private readonly _answer: string) {
     this.#attemptCount = 0;
   }
 
@@ -14,5 +15,8 @@ export default class OpponentImpl implements Opponent {
   }
   public get attemptCount(): number {
     return this.#attemptCount;
+  }
+  public increaseAttemptCount(): void {
+    this.#attemptCount++;
   }
 }

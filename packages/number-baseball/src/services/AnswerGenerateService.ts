@@ -1,25 +1,28 @@
 import { GameConfiguration } from '../model/GameConfiguration';
+import { RandomService } from './RandomService';
 
 export interface AnswerGenerateService {
   generate(): string;
 }
 
 export default class AnswerGenerateServiceImpl implements AnswerGenerateService {
-  constructor(private readonly gameConfiguration: GameConfiguration) {}
+  public constructor(
+    private readonly gameConfiguration: GameConfiguration,
+    private readonly randomService: RandomService
+  ) {}
 
   public generate(): string {
-    // const { digitCount, maxNumberOfRange, minNumberOfRange } =
-    //   this.gameConfiguration;
+    const { digitCount, maxNumberOfRange, minNumberOfRange } = this.gameConfiguration;
+    const uniqueNumbers = new Set<string>();
 
-    // const answer = Array.from(
-    //   { length: digitCount },
-    //   () =>
-    //     Math.floor(Math.random() * (maxNumberOfRange - minNumberOfRange + 1)) +
-    //     minNumberOfRange
-    // ).join("");
+    while (uniqueNumbers.size < digitCount) {
+      const random = this.randomService
+        .getRandomNumber(minNumberOfRange, maxNumberOfRange)
+        .toString();
 
-    const answer = '123';
+      uniqueNumbers.add(random);
+    }
 
-    return answer;
+    return Array.from(uniqueNumbers).join('');
   }
 }
