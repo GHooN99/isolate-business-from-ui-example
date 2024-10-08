@@ -34,5 +34,6 @@ const createGameController = (
 
 export type { GameConfiguration } from './model/GameConfiguration';
 export type { GameResult } from './model/GameResult';
+export { parseResult } from './utils/parseResult';
 
 export default createGameController;
