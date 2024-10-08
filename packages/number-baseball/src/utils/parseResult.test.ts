@@ -1,4 +1,3 @@
-import { GameResult } from '../model/GameResult';
 import { parseResult } from './parseResult';
 
 describe('parseResult 테스트', () => {
