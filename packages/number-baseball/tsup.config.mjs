@@ -9,6 +9,6 @@ export default defineConfig({
   clean: true,
   outDir: 'dist',
   minify: false,
-  // dts: true,
+  dts: true,
   tsconfig: './tsconfig.build.json',
 });

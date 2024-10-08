@@ -4,7 +4,7 @@
     "composite": true,
     "moduleResolution": "node",
     "declaration": true,
-
+    "declarationDir": "./dist/types", // 선언 파일 생성 경로
     /* Language and Environment */
     "target": "ES2018" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "lib": [
