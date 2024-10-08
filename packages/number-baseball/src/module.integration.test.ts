@@ -17,6 +17,7 @@ describe('숫자야구 게임 모듈 통합 테스트', () => {
     randomService = {
       getRandomNumber: vi.fn(),
     };
+
     gameController = createGameController(
       {
         digitCount: 3,
@@ -86,5 +87,18 @@ describe('숫자야구 게임 모듈 통합 테스트', () => {
       isCorrect: true,
       attemptCount: 1,
     });
+  });
+
+  test('답이 123이고 입력 에러가 발생한 상황.', () => {
+    setRandomMockSequence([1, 2, 3]);
+    gameController.start();
+
+    expect(() => gameController.getResult('12')).toThrowError('Invalid input length');
+    expect(() => gameController.getResult('1234')).toThrowError('Invalid input length');
+
+    expect(() => gameController.getResult('abc')).toThrowError('Input should be a number');
+    expect(() => gameController.getResult('112')).toThrowError(
+      'Input should not contain duplicate numbers'
+    );
   });
 });
