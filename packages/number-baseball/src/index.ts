@@ -4,7 +4,7 @@ import { GameConfiguration } from './model/GameConfiguration';
 import AnswerGenerateServiceImpl from './services/AnswerGenerateService';
 import GameEvaluateServiceImpl from './services/GameEvalutateService';
 import OpponentManageServiceImpl from './services/OpponentManageService';
-import RandomServiceImpl from './services/RandomService';
+import RandomServiceImpl, { RandomService } from './services/RandomService';
 
 const defaultGameConfiguration: GameConfiguration = {
   digitCount: 3,
@@ -13,18 +13,26 @@ const defaultGameConfiguration: GameConfiguration = {
   maxAttemptCount: -1,
 };
 
-const createOpponentManageService = (gameConfiguration: GameConfiguration) => {
+const createOpponentManageService = (
+  gameConfiguration: GameConfiguration,
+  randomService: RandomService
+) => {
   return new OpponentManageServiceImpl(
-    new AnswerGenerateServiceImpl(gameConfiguration, new RandomServiceImpl()),
+    new AnswerGenerateServiceImpl(gameConfiguration, randomService),
     new GameEvaluateServiceImpl()
   );
 };
 
 const createGameController = (
-  gameConfiguration: GameConfiguration = defaultGameConfiguration
+  gameConfiguration: GameConfiguration = defaultGameConfiguration,
+  randomService: RandomService = new RandomServiceImpl()
 ): GameController =>
-  new GameControllerImpl(createOpponentManageService(gameConfiguration), gameConfiguration);
+  new GameControllerImpl(
+    createOpponentManageService(gameConfiguration, randomService),
+    gameConfiguration
+  );
 
 export type { GameConfiguration } from './model/GameConfiguration';
 export type { GameResult } from './model/GameResult';
+
 export default createGameController;
