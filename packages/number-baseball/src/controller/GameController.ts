@@ -1,14 +1,10 @@
-import { GameConfiguration } from '../model/GameConfiguration';
+import { GameNotInitializedException } from '../model/Errors';
 import { GameResult } from '../model/GameResult';
+import { AnswerCheckService } from '../services/AnswerCheckService';
+import { InputValidateService } from '../services/InputValidateService';
 import { OpponentManageService } from '../services/OpponentManageService';
 import { asserts } from '../utils/asserts';
 
-// input validation service(config)
-// result evaluation service(config) 가 추가됨
-// 이러면 컨트롤러는 config 를 참조하지 않게 됨
-
-// error 커스텀 해야함
-// asserts(condition,{ifFail:Error})
 export interface GameController {
   start(): void;
   restart(): void;
@@ -20,7 +16,8 @@ export default class GameControllerImpl implements GameController {
 
   public constructor(
     private readonly opponentManageService: OpponentManageService,
-    private readonly gameConfiguration: GameConfiguration
+    private readonly inputValidateService: InputValidateService,
+    private readonly answerCheckService: AnswerCheckService
   ) {}
 
   public start(): void {
@@ -29,16 +26,14 @@ export default class GameControllerImpl implements GameController {
   }
 
   public restart(): void {
-    asserts(this.isGameStarted, { ifFail: new Error('Game is not started') });
+    asserts(this.isGameStarted, { ifFail: new GameNotInitializedException() });
     this.opponentManageService.init();
   }
 
   public getResult(input: string): GameResult {
-    asserts(this.isGameStarted, { ifFail: new Error('Game is not started') });
+    asserts(this.isGameStarted, { ifFail: new GameNotInitializedException() });
 
-    asserts(this.gameConfiguration.digitCount === input.length, {
-      ifFail: new Error('Invalid input length'),
-    });
+    this.inputValidateService.validate(input);
 
     const result = this.opponentManageService.evaluate(input);
     const { attemptCount } = this.opponentManageService;
@@ -46,7 +41,7 @@ export default class GameControllerImpl implements GameController {
     return {
       result: { ...result },
       attemptCount,
-      isCorrect: result.strike === this.gameConfiguration.digitCount,
+      isCorrect: this.answerCheckService.checkIsCorrect(result.strike),
     };
   }
 }
