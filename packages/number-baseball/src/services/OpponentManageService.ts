@@ -23,7 +23,7 @@ export default class OpponentManageServiceImpl implements OpponentManageService 
   }
 
   public evaluate(input: string): EvaluatedResult {
-    asserts(this.opponent !== null, 'Opponent is not initialized');
+    asserts(this.opponent !== null, { ifFail: new Error('Opponent is not initialized') });
     this.opponent.increaseAttemptCount();
 
     const { answer } = this.opponent;
@@ -33,7 +33,7 @@ export default class OpponentManageServiceImpl implements OpponentManageService 
   }
 
   public get attemptCount(): number {
-    asserts(this.opponent !== null, 'Opponent is not initialized');
+    asserts(this.opponent !== null, { ifFail: new Error('Opponent is not initialized') });
     return this.opponent.attemptCount;
   }
 }
