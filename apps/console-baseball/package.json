@@ -1,0 +1,21 @@
+{
+  "name": "console-baseball",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsup src/index.ts --watch --onSuccess 'node dist/index.cjs'",
+    "start": "tsup src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ibfu/number-baseball": "workspace:*"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.2"
+  }
+}
