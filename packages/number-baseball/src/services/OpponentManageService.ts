@@ -1,3 +1,4 @@
+import { OpponentNotInitializedException } from '../model/Errors';
 import { EvaluatedResult } from '../model/EvaluatedResult';
 import OpponentImpl, { Opponent } from '../model/Opponent';
 import { asserts } from '../utils/asserts';
@@ -23,7 +24,7 @@ export default class OpponentManageServiceImpl implements OpponentManageService 
   }
 
   public evaluate(input: string): EvaluatedResult {
-    asserts(this.opponent !== null, { ifFail: new Error('Opponent is not initialized') });
+    asserts(this.opponent !== null, { ifFail: new OpponentNotInitializedException() });
     this.opponent.increaseAttemptCount();
 
     const { answer } = this.opponent;
@@ -33,7 +34,7 @@ export default class OpponentManageServiceImpl implements OpponentManageService 
   }
 
   public get attemptCount(): number {
-    asserts(this.opponent !== null, { ifFail: new Error('Opponent is not initialized') });
+    asserts(this.opponent !== null, { ifFail: new OpponentNotInitializedException() });
     return this.opponent.attemptCount;
   }
 }
