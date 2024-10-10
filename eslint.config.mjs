@@ -5,7 +5,8 @@ import pluginReact from 'eslint-plugin-react';
 
 /** @type import("eslint").Linter.Config[] */
 const config = [
-  { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
+  { files: ['**/*.{ts,tsx}'] },
+  { ignores: ['**/node_modules/**', '**/dist/**'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
