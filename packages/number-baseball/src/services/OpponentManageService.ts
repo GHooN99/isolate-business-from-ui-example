@@ -1,7 +1,7 @@
 import { OpponentNotInitializedException } from '../model/Errors';
 import { EvaluatedResult } from '../model/EvaluatedResult';
 import OpponentImpl, { Opponent } from '../model/Opponent';
-import { asserts } from '../utils/asserts';
+import { requires } from '../utils/requires';
 import { AnswerGenerateService } from './AnswerGenerateService';
 import { GameEvaluateService } from './GameEvalutateService';
 
@@ -24,7 +24,7 @@ export default class OpponentManageServiceImpl implements OpponentManageService 
   }
 
   public evaluate(input: string): EvaluatedResult {
-    asserts(this.opponent !== null, { ifFail: new OpponentNotInitializedException() });
+    requires(this.opponent !== null, { elseThrow: new OpponentNotInitializedException() });
     this.opponent.increaseAttemptCount();
 
     const { answer } = this.opponent;
@@ -34,7 +34,7 @@ export default class OpponentManageServiceImpl implements OpponentManageService 
   }
 
   public get attemptCount(): number {
-    asserts(this.opponent !== null, { ifFail: new OpponentNotInitializedException() });
+    requires(this.opponent !== null, { elseThrow: new OpponentNotInitializedException() });
     return this.opponent.attemptCount;
   }
 }

@@ -3,7 +3,7 @@ import { GameResult } from '../model/GameResult';
 import { AnswerCheckService } from '../services/AnswerCheckService';
 import { InputValidateService } from '../services/InputValidateService';
 import { OpponentManageService } from '../services/OpponentManageService';
-import { asserts } from '../utils/asserts';
+import { requires } from '../utils/requires';
 
 export interface GameController {
   start(): void;
@@ -26,12 +26,12 @@ export default class GameControllerImpl implements GameController {
   }
 
   public restart(): void {
-    asserts(this.isGameStarted, { ifFail: new GameNotInitializedException() });
+    requires(this.isGameStarted, { elseThrow: new GameNotInitializedException() });
     this.opponentManageService.init();
   }
 
   public getResult(input: string): GameResult {
-    asserts(this.isGameStarted, { ifFail: new GameNotInitializedException() });
+    requires(this.isGameStarted, { elseThrow: new GameNotInitializedException() });
 
     this.inputValidateService.validate(input);
 
