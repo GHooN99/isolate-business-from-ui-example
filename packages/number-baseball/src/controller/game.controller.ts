@@ -1,8 +1,8 @@
-import { GameNotInitializedException } from '../model/Errors';
-import { GameResult } from '../model/GameResult';
-import { AnswerCheckService } from '../services/AnswerCheckService';
-import { InputValidateService } from '../services/InputValidateService';
-import { OpponentManageService } from '../services/OpponentManageService';
+import { GameNotInitializedException } from '../model/errorss';
+import { GameResult } from '../model/game-result';
+import { AnswerCheckService } from '../services/interfaces/answer-check.service';
+import { InputValidateService } from '../services/interfaces/input-validate.service';
+import { OpponentManageService } from '../services/interfaces/opponent-manage.service';
 import { requires } from '../utils/requires';
 
 export interface GameController {

@@ -1,10 +1,7 @@
-import { EvaluatedResult } from '../model/EvaluatedResult';
+import { EvaluatedResult } from '../model/evaluated-result';
+import { GameEvaluateService } from './interfaces/game-evaluate.service';
 
-export interface GameEvaluateService {
-  evaluate(input: string, answer: string): EvaluatedResult;
-}
-
-export default class GameEvaluateServiceImpl implements GameEvaluateService {
+export class GameEvaluateServiceImpl implements GameEvaluateService {
   public evaluate(input: string, answer: string): EvaluatedResult {
     const strikeCount = this.getStrikeCount(input, answer);
     const remainString = this.getRemainString(input, answer);

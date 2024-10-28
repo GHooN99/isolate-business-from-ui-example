@@ -1,4 +1,4 @@
-import { GameResult } from '../model/GameResult';
+import { GameResult } from '../model/game-result';
 
 export const parseResult = ({ result }: GameResult) => {
   if (result.strike === 0 && result.ball === 0) {

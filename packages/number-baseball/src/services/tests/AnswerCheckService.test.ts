@@ -1,5 +1,6 @@
-import { GameConfiguration } from '../model/GameConfiguration';
-import AnswerCheckServiceImpl, { AnswerCheckService } from './AnswerCheckService';
+import { GameConfiguration } from '../../model/game-configuration';
+import { AnswerCheckServiceImpl } from '../answer-check.impl';
+import { AnswerCheckService } from '../interfaces/answer-check.service';
 
 describe('AnswerCheckService 테스트', () => {
   let answerCheckService: AnswerCheckService;

@@ -1,7 +1,8 @@
 import { Mock } from 'vitest';
-import { GameConfiguration } from '../model/GameConfiguration';
-import AnswerGenerateServiceImpl, { AnswerGenerateService } from './AnswerGenerateService';
-import { RandomService } from './RandomService';
+import { GameConfiguration } from '../../model/game-configuration';
+import { AnswerGenerateServiceImpl } from '../answer-generate.impl';
+import { AnswerGenerateService } from '../interfaces/answer-generate.service';
+import { RandomService } from '../interfaces/random.service';
 
 describe('AnswerGenerateService 테스트', () => {
   let answerGenerateService: AnswerGenerateService;

@@ -1,10 +1,10 @@
 import { Mock } from 'vitest';
-import { GameConfiguration } from '../model/GameConfiguration';
-import { OpponentManageService } from '../services/OpponentManageService';
-import GameControllerImpl, { GameController } from './GameController';
-import { InputValidateService } from '../services/InputValidateService';
-import { AnswerCheckService } from '../services/AnswerCheckService';
-import { InvalidInputLengthException } from '../model/Errors';
+import { InvalidInputLengthException } from '../model/errorss';
+import { GameConfiguration } from '../model/game-configuration';
+import { AnswerCheckService } from '../services/interfaces/answer-check.service';
+import { InputValidateService } from '../services/interfaces/input-validate.service';
+import { OpponentManageService } from '../services/interfaces/opponent-manage.service';
+import GameControllerImpl, { GameController } from './game.controller';
 
 describe('GameController 테스트', () => {
   let gameController: GameController;

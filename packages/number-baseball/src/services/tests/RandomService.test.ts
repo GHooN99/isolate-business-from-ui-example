@@ -1,4 +1,5 @@
-import RandomServiceImpl, { RandomService } from './RandomService';
+import { RandomService } from '../interfaces/random.service';
+import { RandomServiceImpl } from '../random.impl';
 
 describe('RandomService 테스트', () => {
   let randomService: RandomService;

@@ -1,11 +1,8 @@
-import { GameConfiguration } from '../model/GameConfiguration';
-import { RandomService } from './RandomService';
+import { GameConfiguration } from '../model/game-configuration';
+import { AnswerGenerateService } from './interfaces/answer-generate.service';
+import { RandomService } from './interfaces/random.service';
 
-export interface AnswerGenerateService {
-  generate(): string;
-}
-
-export default class AnswerGenerateServiceImpl implements AnswerGenerateService {
+export class AnswerGenerateServiceImpl implements AnswerGenerateService {
   public constructor(
     private readonly gameConfiguration: GameConfiguration,
     private readonly randomService: RandomService

@@ -1,7 +1,7 @@
 import { Mock } from 'vitest';
 import createGameController from '.';
-import { GameController } from './controller/GameController';
-import { RandomService } from './services/RandomService';
+import { GameController } from './controller/game.controller';
+import { RandomService } from './services/interfaces/random.service';
 
 describe('숫자야구 게임 모듈 통합 테스트', () => {
   let gameController: GameController;

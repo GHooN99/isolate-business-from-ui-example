@@ -2,9 +2,10 @@ import {
   DuplicateNumberException,
   InvalidInputLengthException,
   InvalidInputTypeException,
-} from '../model/Errors';
-import { GameConfiguration } from '../model/GameConfiguration';
-import InputValidateServiceImpl, { InputValidateService } from './InputValidateService';
+} from '../../model/errorss';
+import { GameConfiguration } from '../../model/game-configuration';
+import { InputValidateServiceImpl } from '../input-validate-impl';
+import { InputValidateService } from '../interfaces/input-validate.service';
 
 describe('InputValidateService 테스트', () => {
   let inputValidateService: InputValidateService;

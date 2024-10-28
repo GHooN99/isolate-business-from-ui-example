@@ -1,4 +1,4 @@
-import { parseResult } from './parseResult';
+import { parseResult } from './parse-result';
 
 describe('parseResult 테스트', () => {
   const resultSet = [

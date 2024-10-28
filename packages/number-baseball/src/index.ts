@@ -1,11 +1,12 @@
-import GameControllerImpl, { GameController } from './controller/GameController';
-import { GameConfiguration } from './model/GameConfiguration';
-import AnswerCheckServiceImpl from './services/AnswerCheckService';
-import AnswerGenerateServiceImpl from './services/AnswerGenerateService';
-import GameEvaluateServiceImpl from './services/GameEvalutateService';
-import InputValidateServiceImpl from './services/InputValidateService';
-import OpponentManageServiceImpl from './services/OpponentManageService';
-import RandomServiceImpl, { RandomService } from './services/RandomService';
+import GameControllerImpl, { type GameController } from './controller/game.controller';
+import { type GameConfiguration } from './model/game-configuration';
+import { AnswerCheckServiceImpl } from './services/answer-check.impl';
+import { AnswerGenerateServiceImpl } from './services/answer-generate.impl';
+import { GameEvaluateServiceImpl } from './services/game-evaluate.impl';
+import { InputValidateServiceImpl } from './services/input-validate-impl';
+import { type RandomService } from './services/interfaces/random.service';
+import { OpponentManageServiceImpl } from './services/opponent-manage.impl';
+import { RandomServiceImpl } from './services/random.impl';
 
 const defaultGameConfiguration: GameConfiguration = {
   digitCount: 3,
@@ -34,9 +35,9 @@ const createGameController = (
     new AnswerCheckServiceImpl(gameConfiguration)
   );
 
-export * from './model/Errors';
-export type { GameConfiguration } from './model/GameConfiguration';
-export type { GameResult } from './model/GameResult';
-export { parseResult } from './utils/parseResult';
+export * from './model/errorss';
+export type { GameConfiguration } from './model/game-configuration';
+export type { GameResult } from './model/game-result';
+export { parseResult } from './utils/parse-result';
 
 export default createGameController;

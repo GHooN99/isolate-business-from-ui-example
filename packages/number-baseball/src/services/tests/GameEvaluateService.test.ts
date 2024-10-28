@@ -1,4 +1,5 @@
-import GameEvaluateServiceImpl, { GameEvaluateService } from './GameEvalutateService';
+import { GameEvaluateServiceImpl } from '../game-evaluate.impl';
+import { GameEvaluateService } from '../interfaces/game-evaluate.service';
 
 describe('GameEvaluateService 테스트', () => {
   let gameEvaluateService: GameEvaluateService;

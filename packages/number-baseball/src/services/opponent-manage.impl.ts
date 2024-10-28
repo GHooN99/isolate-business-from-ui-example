@@ -1,17 +1,13 @@
-import { OpponentNotInitializedException } from '../model/Errors';
-import { EvaluatedResult } from '../model/EvaluatedResult';
-import OpponentImpl, { Opponent } from '../model/Opponent';
+import { OpponentNotInitializedException } from '../model/errorss';
+import { EvaluatedResult } from '../model/evaluated-result';
+import OpponentImpl, { Opponent } from '../model/opoonents';
 import { requires } from '../utils/requires';
-import { AnswerGenerateService } from './AnswerGenerateService';
-import { GameEvaluateService } from './GameEvalutateService';
+import { AnswerGenerateService } from './interfaces/answer-generate.service';
+import { GameEvaluateService } from './interfaces/game-evaluate.service';
 
-export interface OpponentManageService {
-  init(): void;
-  evaluate(input: string): EvaluatedResult;
-  get attemptCount(): number;
-}
+import { OpponentManageService } from './interfaces/opponent-manage.service';
 
-export default class OpponentManageServiceImpl implements OpponentManageService {
+export class OpponentManageServiceImpl implements OpponentManageService {
   private opponent: Opponent | null = null;
 
   public constructor(

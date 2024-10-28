@@ -1,4 +1,4 @@
-import { EvaluatedResult } from './EvaluatedResult';
+import { EvaluatedResult } from './evaluated-result';
 
 export type GameResult = {
   /** 결과 */

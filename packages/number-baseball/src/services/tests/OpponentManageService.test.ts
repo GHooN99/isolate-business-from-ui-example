@@ -1,7 +1,8 @@
 import { Mock } from 'vitest';
-import { AnswerGenerateService } from './AnswerGenerateService';
-import { GameEvaluateService } from './GameEvalutateService';
-import OpponentManageServiceImpl, { OpponentManageService } from './OpponentManageService';
+import { AnswerGenerateService } from '../interfaces/answer-generate.service';
+import { GameEvaluateService } from '../interfaces/game-evaluate.service';
+import { OpponentManageService } from '../interfaces/opponent-manage.service';
+import { OpponentManageServiceImpl } from '../opponent-manage.impl';
 
 describe('OpponentManageService 테스트', () => {
   let opponentManageService: OpponentManageService;
