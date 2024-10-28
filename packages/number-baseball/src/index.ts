@@ -35,7 +35,7 @@ const createGameController = (
     new AnswerCheckServiceImpl(gameConfiguration)
   );
 
-export * from './model/errorss';
+export * from './model/errors';
 export type { GameConfiguration } from './model/game-configuration';
 export type { GameResult } from './model/game-result';
 export { parseResult } from './utils/parse-result';

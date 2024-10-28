@@ -1,4 +1,4 @@
-import { GameNotInitializedException } from '../model/errorss';
+import { GameNotInitializedException } from '../model/errors';
 import { GameResult } from '../model/game-result';
 import { AnswerCheckService } from '../services/interfaces/answer-check.service';
 import { InputValidateService } from '../services/interfaces/input-validate.service';

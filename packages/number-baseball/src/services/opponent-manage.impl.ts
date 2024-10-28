@@ -1,6 +1,6 @@
-import { OpponentNotInitializedException } from '../model/errorss';
+import { OpponentNotInitializedException } from '../model/errors';
 import { EvaluatedResult } from '../model/evaluated-result';
-import OpponentImpl, { Opponent } from '../model/opoonents';
+import OpponentImpl, { Opponent } from '../model/opoonent';
 import { requires } from '../utils/requires';
 import { AnswerGenerateService } from './interfaces/answer-generate.service';
 import { GameEvaluateService } from './interfaces/game-evaluate.service';

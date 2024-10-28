@@ -1,5 +1,5 @@
 import { Mock } from 'vitest';
-import { InvalidInputLengthException } from '../model/errorss';
+import { InvalidInputLengthException } from '../model/errors';
 import { GameConfiguration } from '../model/game-configuration';
 import { AnswerCheckService } from '../services/interfaces/answer-check.service';
 import { InputValidateService } from '../services/interfaces/input-validate.service';

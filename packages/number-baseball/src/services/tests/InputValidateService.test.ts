@@ -2,7 +2,7 @@ import {
   DuplicateNumberException,
   InvalidInputLengthException,
   InvalidInputTypeException,
-} from '../../model/errorss';
+} from '../../model/errors';
 import { GameConfiguration } from '../../model/game-configuration';
 import { InputValidateServiceImpl } from '../input-validate-impl';
 import { InputValidateService } from '../interfaces/input-validate.service';
